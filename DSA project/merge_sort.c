@@ -26,9 +26,13 @@ void merge_sort(int *ar,int low,int high){
     }
 }
 int main(){
-    int ar[]={15,5,24,8,1,3,16,10,20};
+    int ar[]={11,8,7,22,5,4,3,2,1};
     int size=9;
+    printf("BEFORE SORT\n");
+    for(int i=0;i<size;i++)
+    printf("%d ",ar[i]);
     merge_sort(ar,0,size-1);
+    printf("\nAFTER SORT\n");
     for(int i=0;i<size;i++)
     printf("%d ",ar[i]);
     return 0;

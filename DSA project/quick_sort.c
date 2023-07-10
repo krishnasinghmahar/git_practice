@@ -1,10 +1,4 @@
 #include<stdio.h>
-
-void swap(int*a,int*b){
-    int t=*a;
-    *a=*b;
-    *b=t;
-}
 int partition(int *ar,int low,int high){
     int pivot=ar[low];
     int i=low;
@@ -15,15 +9,15 @@ int partition(int *ar,int low,int high){
         while(ar[j]>pivot && j>=low+1)
         j--;
         if(i<j)
-        {
+        {   //swaping
             int t=ar[i];
             ar[i]=ar[j];
             ar[j]=t;
         }
     }
-    int t=ar[low];
-            ar[low]=ar[j];
-            ar[j]=t;
+    int t=ar[low];//swaping
+    ar[low]=ar[j];
+    ar[j]=t;
     return j;
 }
 int qs(int*ar,int low,int high){
@@ -33,11 +27,12 @@ int qs(int*ar,int low,int high){
         qs(ar,partitionIndex+1,high);
     }
 }
-int main(){
-    int ar[]={15,5,24,8,1,3,16,10,20};
-    int size=9;
+void main(){
+    int ar[]={15,5,24,8,1,3,16,10,20},size=9;;
+    printf("Quick Sort :- \n BEFORE SORT\n");
+    for(int i=0;i<size;i++) printf("%d ",ar[i]);
     qs(ar,0,size-1);
-    for(int i=0;i<size;i++)
+    printf("\nAFTER SORT\n");
+    for(int i=0;i<size;i++) 
     printf("%d ",ar[i]);
-    return 0;
 }
