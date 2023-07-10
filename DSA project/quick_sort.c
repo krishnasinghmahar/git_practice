@@ -1,0 +1,43 @@
+#include<stdio.h>
+
+void swap(int*a,int*b){
+    int t=*a;
+    *a=*b;
+    *b=t;
+}
+int partition(int *ar,int low,int high){
+    int pivot=ar[low];
+    int i=low;
+    int j=high;
+    while(i<j){
+        while(ar[i]<=pivot && i<=high-1)
+        i++;
+        while(ar[j]>pivot && j>=low+1)
+        j--;
+        if(i<j)
+        {
+            int t=ar[i];
+            ar[i]=ar[j];
+            ar[j]=t;
+        }
+    }
+    int t=ar[low];
+            ar[low]=ar[j];
+            ar[j]=t;
+    return j;
+}
+int qs(int*ar,int low,int high){
+    if(low<high){
+        int partitionIndex=partition(ar,low,high);
+        qs(ar,low,partitionIndex-1);
+        qs(ar,partitionIndex+1,high);
+    }
+}
+int main(){
+    int ar[]={15,5,24,8,1,3,16,10,20};
+    int size=9;
+    qs(ar,0,size-1);
+    for(int i=0;i<size;i++)
+    printf("%d ",ar[i]);
+    return 0;
+}
